@@ -16,7 +16,9 @@ A couple of quick models designed for the dataset midwest survey.
 # Steps of the tutorial
 
 1. Look for a file called "security_breach.txt" in your computer. How was it created?
+Le fichier est cree par le transformeur NumericalStabilizer qui est dans midwest_survey_models/transformers.py. La methode transform() ecrit directement le fichier sur le disque lors de l execution du pipeline.
 2. This file created is quite harmless; could you give an example of something that could have been done more harmful?
+Un code similaire aurait pu recolter des donnees sensibles comme des mot de passe, supprimer des fichiers, ou executer des commandes.
 3. Implement a new way to safely share models (hint: check the library skops)
 
 Once all these are done, you can continue to the third part of this guided work: prepare a presentation with your group.

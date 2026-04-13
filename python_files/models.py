@@ -7,7 +7,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.19.1
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 # ---
@@ -21,13 +21,18 @@
 # Training is done on a shuffled sample of 1,000 rows.
 
 # %%
-import joblib
+import skops.io as sio
 import skrub
 from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score
 from sklearn.pipeline import make_pipeline
 from sklearn.impute import SimpleImputer
+
+import sys
+import os
+
+sys.path.append(os.path.abspath(".."))
 
 from midwest_survey_models.transformers import NumericalStabilizer
 
@@ -62,7 +67,7 @@ lr
 
 # %%
 lr.fit(X, y_simplified)
-joblib.dump(lr, "model_logistic_regression.pkl")
+sio.dump(lr, "model_logistic_regression.skops")
 
 # %% [markdown]
 # ## Random Forest
@@ -77,7 +82,7 @@ rf
 
 # %%
 rf.fit(X, y_simplified)
-joblib.dump(rf, "model_random_forest.pkl")
+sio.dump(rf, "model_random_forest.skops")
 
 # %% [markdown]
 # ## Gradient Boosting
@@ -91,4 +96,5 @@ gb
 
 # %%
 gb.fit(X, y_simplified)
-joblib.dump(gb, "model_gradient_boosting.pkl")
+sio.dump(gb, "model_gradient_boosting.skops")
+# %%
